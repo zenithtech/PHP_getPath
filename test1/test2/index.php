@@ -7,7 +7,7 @@
 		<title>PHP_getPath</title>
 	</head>
 	<body>
-		<?php echo $_SESSION['pathname']; ?>
+		<?php echo $_SESSION['ABSHOME']; ?>
 		<br />
 		<a href="../../">home</a>
 		<br />

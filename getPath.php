@@ -1,25 +1,26 @@
 <?php 
 
-$documentroot = $_SERVER['DOCUMENT_ROOT'];
+define('DOCROOT', $_SERVER['DOCUMENT_ROOT']);
 
-$absolutepath = debug_backtrace()[count(debug_backtrace()) - 1]['file'];
+define('ABSPATH', debug_backtrace()[count(debug_backtrace()) - 1]['file']);
 
-$publicpath = realpath(dirname($absolutepath)).'/';
+define('PUBPATH', realpath(dirname(ABSPATH)).'/');
 
-if (substr($publicpath, 0, strlen($documentroot)) == $documentroot) {
+if (substr(PUBPATH, 0, strlen(DOCROOT)) == DOCROOT) {
 
-    $publicpathTrimmed = substr($publicpath, strlen($documentroot));
-
-}
-
-if(!isset($_SESSION['publicpath'])) {
-
-	$_SESSION['publicpath'] = $publicpath;
+	define('HOMEPATH', substr(PUBPATH, strlen(DOCROOT)));
 
 }
 
-if(!isset($_SESSION['pathname'])) {
+if(!isset($_SESSION['PUBPATH'])) {
 
-	$_SESSION['pathname'] = $publicpathTrimmed;
+	$_SESSION['PUBPATH'] = PUBPATH;
 
 }
+
+if(!isset($_SESSION['ABSHOME'])) {
+
+	$_SESSION['ABSHOME'] = HOMEPATH;
+
+}
+
